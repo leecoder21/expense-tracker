@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const ExpenseFilter = ({ onFilter, selected }) => {
@@ -8,11 +8,9 @@ const ExpenseFilter = ({ onFilter, selected }) => {
 
   return (
     <Wrapper>
-      <Label>Filter by year</Label>
+      <Label>연도별 지출</Label>
       <Select value={selected} onChange={filterValue}>
-        <option value="none" selected>
-          선택
-        </option>
+        <option value="none">선택</option>
         <option value="2022">2022</option>
         <option value="2021">2021</option>
         <option value="2020">2020</option>
@@ -38,7 +36,8 @@ const Label = styled.label`
 `;
 
 const Select = styled.select`
-  padding: 0.5rem 2rem;
+  padding: 0.5rem 1.5rem;
   font-weight: bold;
+  font-size: 1rem;
   border-radius: 6px;
 `;

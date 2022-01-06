@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import ExpenseItem from "./ExpenseItem";
 import ExpenseFilter from "./ExpenseFilter";
+import Chart from "./Chart";
 
 const Expenses = ({ items, onDeleteExpense }) => {
   const [selectedYear, setSelectedYear] = useState("none");
@@ -17,22 +18,25 @@ const Expenses = ({ items, onDeleteExpense }) => {
   return (
     <Wrapper>
       <ExpenseFilter onFilter={filteredChangeHandler} selected={selectedYear} />
-      {items.length === 0 ? (
-        <Empty>지출이 없습니다.</Empty>
-      ) : (
-        (selectedYear === "none" ? items : filteredExpenses).map((item) => {
-          return (
-            <ExpenseItem
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              amount={item.amount}
-              date={item.date}
-              onDeleteExpense={onDeleteExpense}
-            />
-          );
-        })
-      )}
+      <Chart expenses={filteredExpenses} />
+      <ul>
+        {items.length === 0 ? (
+          <Empty>지출이 없습니다.</Empty>
+        ) : (
+          (selectedYear === "none" ? items : filteredExpenses).map((item) => {
+            return (
+              <ExpenseItem
+                key={item.id}
+                id={item.id}
+                title={item.title}
+                amount={item.amount}
+                date={item.date}
+                onDeleteExpense={onDeleteExpense}
+              />
+            );
+          })
+        )}
+      </ul>
     </Wrapper>
   );
 };

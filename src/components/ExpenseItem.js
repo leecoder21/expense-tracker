@@ -20,7 +20,7 @@ const ExpenseItem = ({ id, title, amount, date, onDeleteExpense }) => {
 
 export default ExpenseItem;
 
-const Wrapper = styled.div`
+const Wrapper = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -64,4 +64,8 @@ const Cancel = styled.button`
   color: white;
   background-color: transparent;
   font-size: 1.5rem;
+
+  &:hover {
+    color: #588157;
+  }
 `;

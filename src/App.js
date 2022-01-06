@@ -16,7 +16,7 @@ const DUMMY_EXPENSES = [
     amount: 35000,
     date: new Date(2021, 2, 28),
   },
-  { id: "3", title: "가전", amount: 1000000, date: new Date(2021, 2, 12) },
+  { id: "3", title: "가전", amount: 100000, date: new Date(2021, 3, 12) },
   {
     id: "4",
     title: "고구마",

@@ -21,7 +21,7 @@ const ExpenseForm = ({ onSaveExpense }) => {
 
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
 
@@ -35,7 +35,7 @@ const ExpenseForm = ({ onSaveExpense }) => {
     <form onSubmit={submitHandler}>
       <NewExpenseControls>
         <Input>
-          <label>Title</label>
+          <label>내 역</label>
           <input
             type="text"
             value={enteredTitle}
@@ -44,7 +44,7 @@ const ExpenseForm = ({ onSaveExpense }) => {
           />
         </Input>
         <Input>
-          <label>Amount</label>
+          <label>금 액</label>
           <input
             type="number"
             min="100"
@@ -55,7 +55,7 @@ const ExpenseForm = ({ onSaveExpense }) => {
           />
         </Input>
         <Input>
-          <label>Date</label>
+          <label>날 짜</label>
           <input
             type="date"
             min="2019-01-01"
@@ -67,7 +67,7 @@ const ExpenseForm = ({ onSaveExpense }) => {
         </Input>
       </NewExpenseControls>
       <SubmitBtn>
-        <button type="submit">Add Expense</button>
+        <button type="submit">지출 추가하기</button>
       </SubmitBtn>
     </form>
   );
@@ -87,9 +87,9 @@ const NewExpenseControls = styled.div`
 
 const Input = styled.div`
   label {
+    display: block;
     font-weight: bold;
     margin-bottom: 0.5rem;
-    display: block;
   }
 
   input {
@@ -104,11 +104,12 @@ const Input = styled.div`
 
 const SubmitBtn = styled.div`
   text-align: right;
+  font-weight: 600;
 
   button {
     font: inherit;
     cursor: pointer;
-    padding: 1rem 2rem;
+    padding: 0.8rem 1.6rem;
     border: none;
     background-color: #0d3b66;
     color: white;
