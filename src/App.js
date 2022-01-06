@@ -1,37 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import { createGlobalStyle } from "styled-components";
 import Expenses from "./components/Expenses";
+import NewExpense from "./components/NewExpense";
 
-function App() {
-  const expenses = [
-    {
-      id: "1",
-      title: "고구마",
-      amount: 5000,
-      date: new Date(2020, 7, 14),
-    },
-    { id: "2", title: "가전", amount: 1000000, date: new Date(2021, 2, 12) },
-    {
-      id: "3",
-      title: "포켓 도시락",
-      amount: 35000,
-      date: new Date(2021, 2, 28),
-    },
-    {
-      id: "4",
-      title: "치킨스톡",
-      amount: 6000,
-      date: new Date(2022, 1, 4),
-    },
-  ];
+const DUMMY_EXPENSES = [
+  {
+    id: "1",
+    title: "치킨스톡",
+    amount: 6000,
+    date: new Date(2022, 0, 4),
+  },
+  {
+    id: "2",
+    title: "포켓 도시락",
+    amount: 35000,
+    date: new Date(2021, 2, 28),
+  },
+  { id: "3", title: "가전", amount: 1000000, date: new Date(2021, 2, 12) },
+  {
+    id: "4",
+    title: "고구마",
+    amount: 5000,
+    date: new Date(2020, 7, 14),
+  },
+];
+
+const App = () => {
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+
+  const addExpenseHandler = (expense) => {
+    setExpenses((prevExpenses) => {
+      return [expense, ...prevExpenses];
+    });
+  };
+
+  const deleteExpenseHandler = (id) => {
+    setExpenses(expenses.filter((item) => item.id !== id));
+  };
 
   return (
     <>
       <GlobalStyle />
-      <Expenses items={expenses} />
+      <NewExpense onAddExpense={addExpenseHandler} />
+      <Expenses items={expenses} onDeleteExpense={deleteExpenseHandler} />
     </>
   );
-}
+};
 
 export default App;
 
@@ -43,7 +57,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
   body {
-    background: #e9ecef;
+    background: #3f3f3f;
   }
 
   input:focus {

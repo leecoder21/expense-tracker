@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 const ExpenseDate = ({ date }) => {
-  console.log(date);
   const month = date.toLocaleString("kr-KR", { month: "long" });
   const year = date.getFullYear();
   const day = date.toLocaleString("kr-KR", { day: "2-digit" });
+
   return (
     <Wrapper>
       <Year>{year}</Year>
@@ -24,10 +24,10 @@ const Wrapper = styled.div`
   justify-content: center;
   width: 5.5rem;
   height: 5.5rem;
-  border: 1px solid #ececec;
   background-color: #2a2a2a;
   color: white;
   border-radius: 12px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
 `;
 
 const Year = styled.div`

@@ -1,14 +1,18 @@
 import React from "react";
 import styled from "styled-components";
+import { MdCancel } from "react-icons/md";
 import ExpenseDate from "./ExpenseDate";
 
-const ExpenseItem = ({ title, amount, date }) => {
+const ExpenseItem = ({ id, title, amount, date, onDeleteExpense }) => {
   return (
     <Wrapper>
-      <ExpenseDate date={date} />
+      <ExpenseDate date={date} id={id} />
       <ExpenseDescription>
         <h2>{title}</h2>
         <div>{amount.toLocaleString()}원</div>
+        <Cancel onClick={() => onDeleteExpense(id)}>
+          <MdCancel />
+        </Cancel>
       </ExpenseDescription>
     </Wrapper>
   );
@@ -36,7 +40,7 @@ const ExpenseDescription = styled.div`
   h2 {
     flex: 1;
     margin: 0 2rem;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: white;
   }
 
@@ -46,10 +50,18 @@ const ExpenseDescription = styled.div`
     justify-content: center;
     padding: 0.8rem;
     color: white;
-    background-color: #03045e;
-    border: 1px solid white;
+    background-color: #0d3b66;
     border-radius: 12px;
     font-size: 1rem;
     font-weight: bold;
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
   }
+`;
+
+const Cancel = styled.button`
+  padding: 0.5rem;
+  border: none;
+  color: white;
+  background-color: transparent;
+  font-size: 1.5rem;
 `;
